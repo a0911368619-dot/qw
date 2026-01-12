@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>TTS 文字轉語音工具</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="range"] {
+      width: 300px;
+    }
+    #textInput {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    #speakBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    #speakBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>TTS 文字轉語音工具</h2>
+
+  <label for="rate">參數調整：<br>語速：<span id="rateValue">1</span></label>
+  <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1" oninput="updateRate()">
+
+  <label for="pitch">語調：<span id="pitchValue">1</span></label>
+  <input type="range" id="pitch" min="0" max="2" step="0.1" value="1" oninput="updatePitch()">
+
+  <textarea id="textInput" rows="4">你好，這是一個測試 TTS 功能的網頁。</textarea>
+  <button id="speakBtn" onclick="speakText()">朗讀文字</button>
+
+  <script>
+    function updateRate() {
+      document.getElementById('rateValue').textContent = document.getElementById('rate').value;
+    }
+
+    function updatePitch() {
+      document.getElementById('pitchValue').textContent = document.getElementById('pitch').value;
+    }
+
+    function speakText() {
+      const text = document.getElementById('textInput').value;
+      const rate = parseFloat(document.getElementById('rate').value);
+      const pitch = parseFloat(document.getElementById('pitch').value);
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-TW';
+      utterance.rate = rate;
+      utterance.pitch = pitch;
+
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+</body>
+</html>
