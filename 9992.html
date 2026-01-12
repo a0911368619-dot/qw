@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>我的第一個網頁</title>
+  <style>
+    body {
+      background-color: #d6eaf8;
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2e86c1;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5dade2;
+    }
+  </style>
+</head>
+<body>
+  <h1>我的第一個網頁</h1>
+  <p>這是我的第一個網頁內容。</p>
+
+  <button onclick="showWelcome()">顯示歡迎訊息</button>
+  <button onclick="changeBackground()">改變背景顏色</button>
+
+  <script>
+    function showWelcome() {
+      alert("歡迎來到我的網頁！");
+    }
+
+    function changeBackground() {
+      document.body.style.backgroundColor = "#f9e79f";
+    }
+  </script>
+</body>
+</html>
